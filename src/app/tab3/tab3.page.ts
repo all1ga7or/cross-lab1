@@ -43,13 +43,17 @@ export class Tab3Page {
 
   // Function to determine the background color based on the sum
   getRowColor(sum: number): string {
-    if (sum >= 0 && sum <= this.matrixSize * 50) {
+    if (sum >= 0 && sum <= this.matrixSize * 20) {
       return 'green';
-    } else if (sum > this.matrixSize * 50 && sum <= this.matrixSize * 75) {
+    }else if (sum > this.matrixSize * 20 && sum <= this.matrixSize * 40){
+      return '#BAFF49';
+    }else if (sum > this.matrixSize * 40 && sum <= this.matrixSize * 60) {
       return 'yellow';
-    } else if (sum > this.matrixSize * 75 && sum <= this.matrixSize * 100) {
+    }else if (sum > this.matrixSize * 60 && sum <= this.matrixSize * 80) {
+      return 'orange';
+    }else if (sum > this.matrixSize * 80 && sum <= this.matrixSize * 100) {
       return 'red';
-    } else {
+    }else {
       return '';
     }
   }

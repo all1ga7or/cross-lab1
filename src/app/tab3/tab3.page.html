@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Лабораторна робота №3
+      Лабораторна робота №1
     </ion-title>
   </ion-toolbar>
   <ion-toolbar>
@@ -12,35 +12,43 @@
 </ion-header>
 <ion-toolbar  color="primary">
   <ion-buttons slot="start">
-    <ion-menu-button color="dark" menu="second"></ion-menu-button>
+    <ion-menu-button color="dark" menu="first"></ion-menu-button>
   </ion-buttons>
   <ion-title>
     Лабораторні роботи
   </ion-title>
 </ion-toolbar>
-
 <ion-content class="ion-padding">
-  <ion-item>
-    <ion-label position="floating">Розмір матриці (N)</ion-label>
-    <ion-input [(ngModel)]="matrixSize" type="number"></ion-input>
-  </ion-item>
-  <ion-button expand="full" (click)="generateMatrix()">Generate Matrix</ion-button>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Завдання №3</ion-card-title>
+      <ion-card-subtitle>Згенерувати матрицю розміром NxN. Знайти суму кожного рядка матриці. Виокремити рядки за допомогою кольору</ion-card-subtitle>
+    </ion-card-header>
 
-  <ion-grid *ngIf="matrixGenerated">
-    <ion-row>
-      <ion-col *ngFor="let i of generateRange(matrixSize)" class="header-cell">
-        <ion-text>{{i}}</ion-text>
-      </ion-col>
-      <ion-col class="header-cell">
-        "Сума"
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-  <ion-grid *ngIf="matrix" class="matrix-table">
-    <ion-row *ngFor="let row of matrix; let i = index" [style.background-color]="getRowColor(rowSum[i])">
-      <ion-col *ngFor="let cell of row" class="data-cell">
-        <ion-text>{{ cell }}</ion-text>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+    <ion-card-content>
+      <ion-item>
+        <ion-label position="floating">Розмір матриці (N)</ion-label>
+        <ion-input [(ngModel)]="matrixSize" type="number"></ion-input>
+      </ion-item>
+      <ion-button expand="full" (click)="generateMatrix()">Згенерувати матрицю</ion-button>
+    
+      <ion-grid *ngIf="matrixGenerated">
+        <ion-row>
+          <ion-col *ngFor="let i of generateRange(matrixSize)" class="header-cell">
+            <ion-text>{{i}}</ion-text>
+          </ion-col>
+          <ion-col class="header-cell">
+            "Сума"
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <ion-grid *ngIf="matrix" class="matrix-table">
+        <ion-row *ngFor="let row of matrix; let i = index" [style.background-color]="getRowColor(rowSum[i])">
+          <ion-col *ngFor="let cell of row" class="data-cell">
+            <ion-text>{{ cell }}</ion-text>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
