@@ -18,7 +18,7 @@ export class Lab3Page implements OnInit {
   showDetails: boolean = false;
   apiUrl = "https://api.jsonbin.io/v3/qs/65e87e93266cfc3fde944182";
 
-  constructor(public loadingController: LoadingController) { 
+  constructor() { 
     this.fetchData();
   }
 
@@ -41,6 +41,10 @@ export class Lab3Page implements OnInit {
   }
   showFacultyName() {
     this.showInfo = true;
+  }
+  hideFacultyInfo(){
+    this.showInfo = false;
+    this.showDetails = false;
   }
   changeFacultyDetailsStatus(){
     this.showDetails = !this.showDetails;

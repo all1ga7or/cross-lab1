@@ -32,9 +32,9 @@
         декана даного факультету.</ion-card-subtitle>
     </ion-card-header>
     <ion-card-content>
-      <ion-item >
+      <ion-item>
         <ion-label position="floating">Виберіть факультет</ion-label>
-        <ion-select [(ngModel)]="selectedFaculty" (ionChange)="findFacultyInfo()">
+        <ion-select [(ngModel)]="selectedFaculty" (ionChange)="findFacultyInfo()" (ionChange)="hideFacultyInfo()">
           <ion-select-option *ngFor="let faculty of faculties" [value]="faculty.name" >{{ faculty.name }}</ion-select-option>
         </ion-select>
       </ion-item>
