@@ -50,7 +50,7 @@ export class GraphPage implements OnInit {
           {
             label: 'f(x)',
             data: datasetData,
-            borderColor: 'blue',
+            borderColor: '#428CFF',
             borderWidth: 1,
             fill: false,
           },

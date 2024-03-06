@@ -1,0 +1,66 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Лабораторна робота №3
+    </ion-title>
+  </ion-toolbar>
+  <ion-toolbar>
+    <ion-title>
+      Виконав студент групи КН-31, Крищук І.І.
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-toolbar  color="primary">
+  <ion-buttons slot="start">
+    <ion-menu-button color="dark" menu="first"></ion-menu-button>
+  </ion-buttons>
+  <ion-title>
+    Лабораторні роботи
+  </ion-title>
+</ion-toolbar>
+
+<ion-content class="ion-padding">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Завдання</ion-card-title>
+      <ion-card-subtitle>Перелік факультетів:
+        • Назва факультету.
+        • ПІБ декана.
+        • Телефон.
+        • Адреса.
+        Запит. Ввести назву факультету у окремій формі та позначити кольором
+        декана даного факультету.</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item >
+        <ion-label position="floating">Виберіть факультет</ion-label>
+        <ion-select [(ngModel)]="selectedFaculty" (ionChange)="findFacultyInfo()">
+          <ion-select-option *ngFor="let faculty of faculties" [value]="faculty.name" >{{ faculty.name }}</ion-select-option>
+        </ion-select>
+      </ion-item>
+    
+      <ion-button expand="full" (click)="showFacultyName()">Показати інформацію</ion-button>
+    
+      <ion-list *ngIf="selectedFaculty && showInfo">
+        <ion-item (click)="changeFacultyDetailsStatus()">
+          <ion-label>{{ selectedFaculty }}</ion-label>
+        </ion-item>
+    
+        <ion-item *ngIf="selectedFacultyDetails && showDetails">
+          <ion-label>ПІБ декана:</ion-label>
+          <ion-label [ngStyle]="{ 'color': 'blue' }">{{ selectedFacultyDetails.dean.name }}</ion-label>
+        </ion-item>
+    
+        <ion-item *ngIf="selectedFacultyDetails && showDetails">
+          <ion-label>Телефон:</ion-label>
+          <ion-label>{{ selectedFacultyDetails.dean.phone }}</ion-label>
+        </ion-item>
+    
+        <ion-item *ngIf="selectedFacultyDetails && showDetails">
+          <ion-label>Адреса:</ion-label>
+          <ion-label>{{ selectedFacultyDetails.dean.address }}</ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
