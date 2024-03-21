@@ -16,7 +16,7 @@ export class Lab3Page implements OnInit {
   selectedFacultyDetails: any = null;
   showInfo: boolean = false;
   showDetails: boolean = false;
-  apiUrl = "https://api.jsonbin.io/v3/qs/65e87e93266cfc3fde944182";
+  apiUrl = "https://api.jsonbin.io/v3/qs/65f1958bdc74654018b246ec";
 
   constructor() { 
     this.fetchData();
