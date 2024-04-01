@@ -16,10 +16,10 @@ describe('House', () => {
     });
   
     it('should override show method correctly', () => {
-      const expectedOutput = `Це житловий будинок House 1. Кількість поверхів: 3\nЦе будівля House 1. Висота: 0`;
+      const expectedOutput = 'Це житловий будинок House 1. Кількість поверхів: 3\nЦе будівля House 1. Висота: 0';
       expect(house.show()).toEqual(expectedOutput);
     });
     it('House with Negative Parameter', () => {
-      expect(()=> new House ("House  2", 0, -2)).toThrow(new Error("Height must be a non-negative number"));
+      expect(() => new House ("House  2", 0, -2)).toThrow(new Error("Height must be a non-negative number"));
     });
   });

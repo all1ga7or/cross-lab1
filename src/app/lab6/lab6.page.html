@@ -1,0 +1,35 @@
+<app-lab-hat num='6'></app-lab-hat>
+
+<ion-content class="ion-padding">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Завдання</ion-card-title>
+      <ion-card-subtitle>1. Розробити ієрархію класів відповідно до варіанту завдання(у
+        запропоновану у варіанті ієрархію класів можна додавати додаткові
+        класи або інтерфейси). Деякі з класів можуть бути абстрактними.
+        <br>2. Реалізувати для ієрархії механізм
+        інтерфейсів, при цьому один з класів повинен реалізовувати як мінімум
+        два інтерфейси.
+        <br>3. Кожен клас з ієрархії класів повинен мати не менше двох методів.
+        <br>4. Розроблена ієрархія повинна відповідати основним принципам SOLID
+        та патерну High Cohesion + Low Coupling
+        <br>Для перевірки роботи розроблених класів та їх методів необхідно
+        використовувати Unit тести. Необхідно протестувати:
+        <br> - створення усіх класів
+        <br> - усі методи класів</ion-card-subtitle>
+        <ion-card-title>Дана наступна ієрархія класів: Деталь, механізм, виріб, вузол</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-button expand="full" (click)="createInstances()">Створити екземпляри</ion-button>
+    </ion-card-content>
+  </ion-card>
+  <ion-card *ngIf="instancesCreated">
+    <ion-card-header>
+      <ion-card-title>Інформація про створенні екземпляри</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>{{ mechanismInfo }}</p>
+      <p>{{ nodeInfo }}</p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
