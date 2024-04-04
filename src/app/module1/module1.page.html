@@ -1,0 +1,39 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Модульна робота №1
+    </ion-title>
+  </ion-toolbar>
+  <ion-toolbar>
+    <ion-title>
+      Виконав студент групи КН-31, Крищук І.І.
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-toolbar  color="primary">
+  <ion-buttons slot="start">
+    <ion-menu-button color="dark" menu="first"></ion-menu-button>
+  </ion-buttons>
+  <ion-title>
+    Лабораторні роботи
+  </ion-title>
+</ion-toolbar>
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Завдання №1</ion-card-title>
+      <ion-card-subtitle>Розробити сервіс для обчислення значення багаточлену в заданій точці за списком коефіцієнтів. Так, список (1, 2, 3) відповідає багаточлену 
+        P (x) = 1x2 + 2x + 3. 
+        Форма для введення повинна спочатку запитати кількість коефіцієнтів, після чого сформувати відповідну кількість полів введення. Максимальна кількість коефіцієнтів – 5.
+        </ion-card-subtitle>
+    </ion-card-header>
+  
+    <ion-card-content>
+      <app-data-input (calculate)="calculatePolyResult($event)"></app-data-input>
+
+      <ion-item *ngIf="result !== undefined">
+        <ion-label>Результат: {{ result }}</ion-label>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
