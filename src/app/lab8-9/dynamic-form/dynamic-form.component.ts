@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormsModule, FormArray, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { IonContent, IonHeader, IonTitle, IonToolbar, IonButtons, IonButton, IonMenuButton, IonLabel, IonItem, IonInput, IonSegment, IonSegmentButton } from '@ionic/angular/standalone';
-import { StudentCountValidatorService } from '../student-count.service';
+import { StudentCountService } from '../student-count.service';
 import { Group } from './group';
 import { Student } from './student';
 
@@ -34,7 +34,7 @@ export class DynamicFormComponent implements OnInit {
       leader: ['', Validators.required],
       numberOfStudents: ['', [Validators.required, Validators.min(1)]],
       students: this.fb.array([])
-    }, { validators: StudentCountValidatorService.validateStudentCount() });
+    }, { validators: StudentCountService.validateStudentCount() });
 
     this.editGroupForm = this.fb.group({
       groupName: ['', Validators.required]

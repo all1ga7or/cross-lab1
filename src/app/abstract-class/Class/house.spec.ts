@@ -20,6 +20,6 @@ describe('House', () => {
       expect(house.show()).toEqual(expectedOutput);
     });
     it('House with Negative Parameter', () => {
-      expect(() => new House ("House  2", 0, -2)).toThrow(new Error("Height must be a non-negative number"));
+      expect(() => new House ("House  2", -2, 1)).toThrow(new Error("Height must be a non-negative number."));
     });
   });

@@ -4,7 +4,7 @@ import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 @Injectable({
   providedIn: 'root'
 })
-export class StudentCountValidatorService {
+export class StudentCountService {
 
   static validateStudentCount(): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {

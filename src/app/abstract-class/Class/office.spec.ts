@@ -20,6 +20,6 @@ describe('Office', () => {
       expect(office.show()).toEqual(expectedOutput);
     });
     it('Office with Negative Parameter', () => {
-      expect(()=> new Office ("Office  2", 0, -5)).toThrow(new Error("Height must be a non-negative number"));
+      expect(()=> new Office ("Office  2", -5, 2)).toThrow(new Error("Height must be a non-negative number."));
     });
   });

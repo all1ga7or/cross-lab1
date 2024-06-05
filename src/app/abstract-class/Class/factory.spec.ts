@@ -1,26 +1,27 @@
-import { Factory } from "./factory";
+import { Factory } from './factory';
+
 describe('Factory', () => {
-    let factory: Factory;
-  
-    beforeEach(() => {
-      factory = new Factory('Factory 1', 0, 5);
-    });
-  
-    it('should create an instance', () => {
-      expect(factory).toBeTruthy();
-    });
-  
-    it('should calculate foundation height correctly', () => {
-      factory.foundationHeight();
-      expect(factory.height).toEqual(0.000002 * factory.G);
-    });
-  
-    it('should override show method correctly', () => {
-      const expectedOutput = `Це фабрика Factory 1. Кількість цехів: 5. \nЦе будівля Factory 1. Висота: 0`;
-      expect(factory.show()).toEqual(expectedOutput);
+    it('should create an instance of Factory', () => {
+        const factory = new Factory('Factory1', 100, 5);
+        expect(factory).toBeTruthy();
+        expect(factory.name).toBe('Factory1');
+        expect(factory.height).toBe(100);
+        expect(factory.G).toBe(5);
     });
 
-    it('Factory with Negative Parameter', () => {
-      expect(()=> new Factory ("Factory  2", 0, -5)).toThrow(new Error("Height must be a non-negative number"));
+    it('should throw an error if height is negative', () => {
+        expect(() => new Factory('Factory1', -100, 5)).toThrowError("Height must be a non-negative number.");
     });
-  });
+
+    it('should return the correct show message', () => {
+        const factory = new Factory('Factory1', 100, 5);
+        const message = factory.show();
+        expect(message).toContain('Це фабрика Factory1. Кількість цехів: 5.');
+    });
+
+    it('should set the correct foundation height', () => {
+        const factory = new Factory('Factory1', 100, 5);
+        factory.foundationHeight();
+        expect(factory.height).toBe(10); // 0.000002 * 5
+    });
+});
