@@ -1,0 +1,107 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Dynamic Group Form</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-segment [(ngModel)]="action">
+    <ion-segment-button value="createGroup">
+      Create Group
+    </ion-segment-button>
+    <ion-segment-button value="editGroup">
+      Edit Group
+    </ion-segment-button>
+  </ion-segment>
+  <form *ngIf="action === 'createGroup'" [formGroup]="groupForm" (ngSubmit)="onSubmit()">
+    <ion-item>
+      <ion-label position="floating">Group Name</ion-label>
+      <ion-input formControlName="groupName"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Course</ion-label>
+      <ion-input type="number" formControlName="course"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Leader</ion-label>
+      <ion-input formControlName="leader"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Number of Students</ion-label>
+      <ion-input type="number" formControlName="numberOfStudents"></ion-input>
+    </ion-item>
+
+    <ion-button (click)="addStudent()">Add Student</ion-button>
+
+    <div formArrayName="students">
+      <div *ngFor="let student of students.controls; let i = index" [formGroupName]="i">
+        <ion-item>
+          <ion-label position="floating">Student Name</ion-label>
+          <ion-input formControlName="studentName"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Student Age</ion-label>
+          <ion-input type="number" formControlName="studentAge"></ion-input>
+        </ion-item>
+        <ion-button color="danger" (click)="removeStudent(i)">Remove</ion-button>
+      </div>
+    </div>
+
+    <ion-button type="submit">Submit</ion-button>
+
+    <div *ngIf="groupForm.errors && groupForm.errors['studentCountMismatch'] && groupForm.controls['numberOfStudents'].value !== ''">
+      <p class="error">The number of students does not match the specified number of students.</p>
+    </div>    
+  </form>
+  <form *ngIf="action === 'editGroup'" [formGroup]="editGroupForm" (ngSubmit)="showGroup()">
+    <ion-item>
+      <ion-label position="floating">Group Name</ion-label>
+      <ion-input formControlName="groupName"></ion-input>
+    </ion-item>
+  
+    <ion-button type="submit">Show Group</ion-button>
+    
+    <ion-card *ngIf="showStudentList">
+      <ion-card-header>
+        <ion-card-title>Group: {{ selectedGroup?.groupName }}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <table class="student-table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Age</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let student of selectedGroup?.students; let i = index">
+              <td>{{ student.studentName }}</td>
+              <td>{{ student.studentAge }}</td>
+              <td>
+                <ion-button color="danger" (click)="excludeStudent(i)">Exclude</ion-button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </ion-card-content>
+    </ion-card>
+    
+    <ion-button *ngIf="showStudentList" (click)="showAddStudentForm()">Add New Student</ion-button>
+    
+    <form *ngIf="showNewStudentForm" [formGroup]="newStudentForm" (ngSubmit)="addNewStudent()">
+      <ion-item>
+        <ion-label position="floating">Student Name</ion-label>
+        <ion-input formControlName="studentName"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Student Age</ion-label>
+        <ion-input type="number" formControlName="studentAge"></ion-input>
+      </ion-item>
+      <ion-button type="submit">Add</ion-button>
+    </form>
+  </form>
+</ion-content>

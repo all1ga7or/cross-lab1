@@ -1,0 +1,32 @@
+<app-lab-hat num='8-9'></app-lab-hat>
+
+<ion-content>
+  <app-dynamic-form (formSubmit)="addGroup($event)" (addStudentEvent)="addStudent($event)" (removeStudent)="removeStudent($event)"></app-dynamic-form>
+
+  <ion-card *ngFor="let group of groups" (click)="selectGroup(group)">
+    <ion-card-header>
+      <ion-card-title>{{ group.groupName }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content *ngIf="selectedGroup === group">
+      <ion-item>Course: {{ group.course }}</ion-item>
+      <ion-item>Leader: {{ group.leader }}</ion-item>
+      <ion-item>Number of Students: {{ group.numberOfStudents }}</ion-item>
+      <ion-item>
+        <table class="student-table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Age</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let student of group.students">
+              <td>{{ student.studentName }}</td>
+              <td>{{ student.studentAge }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
